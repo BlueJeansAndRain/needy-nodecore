@@ -1,26 +1,19 @@
+"use strict";
+/* globals __needy */
 
-var fs = require('fs');
-var path = require('path');
+if (typeof __needy !== 'undefined' && __needy.resolver.addCore)
+{
+	var utils = require('needy').utils;
+	var paths = require('./paths.json');
 
-// core modules replaced by their browser capable counterparts
-var core = {};
+	for (var core in paths)
+	{
+		if (!paths.hasOwnProperty(core))
+			continue;
 
-// load core modules from builtin dir
-fs.readdirSync(path.resolve(__dirname, 'builtin')).forEach(function(file) {
-  core[path.basename(file, '.js')] = path.resolve(__dirname, 'builtin', file);
-});
+		paths[core] = utils.joinPath(__dirname, paths[core]);
+		__needy.resolver.addCore(core, paths[core]);
+	}
 
-// manually resolve modules that would otherwise resolve as core
-core['punycode'] = path.resolve(__dirname, 'node_modules', 'punycode', 'punycode.js');
-
-// manually add core which are provided by modules
-core['http'] = require.resolve('http-browserify');
-core['vm'] = require.resolve('vm-browserify');
-core['crypto'] = require.resolve('crypto-browserify');
-core['console'] = require.resolve('console-browserify');
-core['zlib'] = require.resolve('zlib-browserify');
-core['buffer'] = require.resolve('buffer-browserify');
-core['constants'] = require.resolve('constants-browserify');
-core['os'] = path.resolve(require.resolve('os-browserify'), '..', 'browser.js');
-
-module.exports = core;
+	module.exports = paths;
+}

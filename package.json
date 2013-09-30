@@ -1,20 +1,21 @@
 {
-  "name": "browser-builtins",
-  "version": "2.0.4",
-  "description": "Builtins that were extracted from node-browser-resolve on which browserify depends",
+  "name": "needy-nodecore",
+  "version": "0.0.1",
+  "description": "Browserify's Node core emulation (node-browser-builtins), modified for client side requiring.",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/node/* && browserify --transform ./test/browserify-transform.js test/browser/* | testling"
+    "build": "node ./scripts/build.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/alexgorbatchev/node-browser-builtins.git"
+    "url": "git@github.com:BlueJeansAndRain/needy-nodecore.git"
   },
   "keywords": [
-    "resolve",
-    "browser"
+    "core",
+    "browser",
+    "emulation"
   ],
-  "author": "Alex Gorbatchev <alex.gorbatchev@gmail.com>",
+  "author": "Chris Ackerman <bluejeansandrain@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "punycode": "1.2.x",
@@ -28,6 +29,5 @@
     "os-browserify": "0.1.x"
   },
   "devDependencies": {
-    "tape": "1.0.x"
   }
 }
