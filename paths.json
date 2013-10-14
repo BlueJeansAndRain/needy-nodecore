@@ -14,6 +14,7 @@
     "events": "core/events.js",
     "fs": "core/fs.js",
     "https": "core/https.js",
+    "module": "core/module.js",
     "net": "core/net.js",
     "path": "core/path.js",
     "process": "core/process.js",
