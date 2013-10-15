@@ -1,6 +1,6 @@
 {
   "name": "needy-nodecore",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Browserify's Node core emulation (node-browser-builtins), modified for client side requiring.",
   "main": "index.js",
   "scripts": {
