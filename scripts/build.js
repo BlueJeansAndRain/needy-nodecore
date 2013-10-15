@@ -9,6 +9,9 @@ var root = path.resolve(__dirname, '..');
 // Load core modules from core directory.
 fs.readdirSync(path.resolve(__dirname, '../core')).forEach(function(file)
 {
+	if (!(/\.js$/).test(file))
+		return;
+
 	paths[path.basename(file, '.js')] = path.relative(root, path.resolve(root, 'core', file));
 });
 
